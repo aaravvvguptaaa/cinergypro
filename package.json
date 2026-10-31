@@ -1,0 +1,105 @@
+{
+  "name": "cinergypro",
+  "version": "1.0.0",
+  "description": "CinergyPro - Craft Every Frame. A professional video editor for macOS and Windows built on Electron, WebGL2, Web Audio and ffmpeg.",
+  "main": "main/main.js",
+  "scripts": {
+    "start": "electron .",
+    "fetch-ffmpeg": "node scripts/fetch-ffmpeg.js",
+    "test": "node scripts/run-tests.js",
+    "test:quick": "node scripts/run-tests.js --quick",
+    "dist:mac": "node scripts/fetch-ffmpeg.js mac-arm64 mac-x64 && electron-builder --mac zip --arm64 --x64",
+    "dist:mac:arm64": "node scripts/fetch-ffmpeg.js mac-arm64 && electron-builder --mac zip --arm64",
+    "dist:win": "node scripts/fetch-ffmpeg.js win-x64 && electron-builder --win --x64 && node build/make-installer.js"
+  },
+  "keywords": [],
+  "author": {
+    "name": "CinergyPro"
+  },
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "electron": "^45.2.1",
+    "electron-builder": "^26.18.0",
+    "resedit": "^2.0.3"
+  },
+  "dependencies": {
+    "ag-psd": "^34.1.0"
+  },
+  "productName": "CinergyPro",
+  "build": {
+    "appId": "com.cinergypro.app",
+    "productName": "CinergyPro",
+    "copyright": "CinergyPro",
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "files": [
+      "main/**/*",
+      "renderer/**/*",
+      "package.json"
+    ],
+    "asar": true,
+    "extraResources": [
+      {
+        "from": "bin/${os}-${arch}",
+        "to": "bin",
+        "filter": [
+          "ffmpeg",
+          "ffprobe",
+          "ffmpeg.exe",
+          "ffprobe.exe"
+        ]
+      }
+    ],
+    "mac": {
+      "category": "public.app-category.video",
+      "icon": "build/icon.png",
+      "target": [
+        {
+          "target": "zip",
+          "arch": [
+            "arm64",
+            "x64"
+          ]
+        }
+      ],
+      "identity": null,
+      "hardenedRuntime": false,
+      "darkModeSupport": true,
+      "minimumSystemVersion": "11.0",
+      "extendInfo": {
+        "NSMicrophoneUsageDescription": "CinergyPro records voice-over through your microphone.",
+        "NSCameraUsageDescription": "CinergyPro does not use the camera.",
+        "NSHighResolutionCapable": true
+      }
+    },
+    "fileAssociations": [
+      {
+        "ext": "cinergy",
+        "name": "CinergyPro Project",
+        "role": "Editor",
+        "icon": "build/icon.png"
+      }
+    ],
+    "artifactName": "${productName}-${version}-mac-${arch}.${ext}",
+    "publish": null,
+    "win": {
+      "target": [
+        {
+          "target": "zip",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "build/icon.ico",
+      "artifactName": "${productName}-${version}-win-${arch}.${ext}",
+      "signAndEditExecutable": false
+    },
+    "afterPack": "build/afterPack.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

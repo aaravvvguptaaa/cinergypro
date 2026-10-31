@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c2028"/><stop offset="1" stop-color="#0a0b0e"/></linearGradient>
+    <linearGradient id="rim" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity="0.14"/><stop offset="1" stop-color="#ffffff" stop-opacity="0.02"/></linearGradient>
+  </defs>
+  <rect x="100" y="100" width="824" height="824" rx="185" fill="url(#bg)"/>
+  <rect x="101.5" y="101.5" width="821" height="821" rx="183.5" fill="none" stroke="url(#rim)" stroke-width="3"/>
+  <g transform="translate(512 512) scale(21) translate(-16 -16)">
+    <rect x="3" y="5" width="26" height="22" rx="4" fill="none" stroke="#2f7cff" stroke-width="2.2"/>
+    <path d="M7 9h2M7 13h2M7 19h2M7 23h2M23 9h2M23 13h2M23 19h2M23 23h2" stroke="#2f7cff" stroke-width="1.8" stroke-linecap="round"/>
+    <g transform="translate(16 16) scale(0.82) translate(-17.2 -16)" fill="#e6ebf2" stroke="#e6ebf2" stroke-width="0.9" stroke-linejoin="round"><path d="M12 10 17.22 13.13 15.53 19.88 12 22Z"/><path d="M19.32 13.13 24.1 16 17.63 19.88Z"/></g>
+  </g>
+</svg>
